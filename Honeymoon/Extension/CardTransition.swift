@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-struct CardTransition: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    CardTransition()
+extension AnyTransition {
+  static var trailingBottom: AnyTransition {
+    AnyTransition.asymmetric(
+      insertion: .identity,
+      removal: AnyTransition.move(edge: .trailing).combined(with: .move(edge: .bottom)))
+  }
+  
+  static var leadingBottom: AnyTransition {
+    AnyTransition.asymmetric(
+      insertion: .identity,
+      removal: AnyTransition.move(edge: .leading).combined(with: .move(edge: .bottom)))
+  }
 }
